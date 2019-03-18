@@ -4,10 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TheNewDebtBook.View"
+        xmlns:viewModel="clr-namespace:TheDebtBook.ViewModel"
         mc:Ignorable="d"
         Height="450" Width="315" MinHeight="450" MinWidth="315">
-
-        <Grid Name="DebtGrid" Background="LightCyan">
+    <Window.DataContext>
+        <viewModel:ViewModel />
+    </Window.DataContext>
+    <Grid Name="DebtGrid" Background="LightCyan">
             <Grid.RowDefinitions>
                 <RowDefinition Height="32"></RowDefinition>
                 <RowDefinition Height="31.2"></RowDefinition>
@@ -24,13 +27,13 @@
                    Grid.Column="0"   
                    Content="Current debt history of:" 
             />
-            <Label Margin="10,0,0,0" 
-                   Name="LabelName" 
+            <TextBlock Margin="10,0,0,0" 
                    VerticalAlignment="Top" 
                    HorizontalAlignment="Left" 
                    MinWidth="58"
                    Grid.Row="1"
                    Grid.Column="0" Width="167"
+                   Text="{Binding Path=GetName}"
             />
 
             <ListBox IsSynchronizedWithCurrentItem="True"

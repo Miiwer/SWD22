@@ -10,13 +10,14 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using TheDebtBook.Model;
+using TheNewDebtBook.View;
 using TheNewDebtBook.ViewModel;
 
 namespace TheDebtBook.ViewModel
 {
     class ViewModel : ObservableCollection<Debts>
     {
-        ObservableCollection<Debts> debts;
+        private ObservableCollection<Debts> debts;
 
         private string CurrentName;
         private double CurrentAmount;
@@ -26,7 +27,15 @@ namespace TheDebtBook.ViewModel
         {
             get
             {
-                return debts;
+                if (debts == null)
+                {
+                    debts = new ObservableCollection<Debts>();
+                    return debts;
+                }
+                else
+                {
+                    return debts;
+                }
             }
         }
 
@@ -86,12 +95,27 @@ namespace TheDebtBook.ViewModel
             if (debts != null)
             {
                 
-                for (int i = 0; i > (debts.Count - 1); i++)
+                for (int i = 0; i <= (debts.Count - 1); i++)
                 {
                     if (debts[i].Name == CurrentName)
                     {
                         debts[i].Amounts.Add(CurrentAmount);
                         debts[i].CalculateSum(debts[i].Amounts);
+                        List<double> NyAmount = debts[i].Amounts;
+                        string SammeNavn = debts[i].Name;
+                        double NySum = debts[i].CalculateSum(NyAmount) + CurrentAmount;
+                        debts.RemoveAt(i);
+                        if (debts.Count == 0)
+                        {
+                            debts.Add(new Debts(SammeNavn, NySum));
+                            debts[i].Amounts = NyAmount;
+                        }
+                        else
+                        {
+                            debts[i] = new Debts(SammeNavn, NySum);
+                            debts[i].Amounts = NyAmount;
+                        }
+                      
                         return;
                     }
                 }
@@ -106,6 +130,15 @@ namespace TheDebtBook.ViewModel
 
         }
 
+        private ICommand _deleteCommand;
+        public ICommand DeleteCommand
+        {
+            get
+            {
+                return _deleteCommand ?? (_deleteCommand = new CommandHandler(() => deleteDebitor(), true));
+            }
+        }
+
         public void deleteDebitor()
         {
             if (debts.Contains(new Debts(CurrentName, CurrentAmount)))
@@ -114,14 +147,37 @@ namespace TheDebtBook.ViewModel
             }
             else
             {
-                MessageBox.Show("DEN FINDES FJOLLEHOVEDE :D !");
+                MessageBox.Show("DEN FINDES IKKE FJOLLEHOVEDE :D !");
             }
+
+        }
+        
+
+        private ICommand _getHistoryCommand;
+        public ICommand GetHistoryCommand
+        {
+            get
+            {
+                return _getHistoryCommand ?? (_getHistoryCommand = new CommandHandler(() => openHistory(), true));
+            }
+        }
+
+        public void openHistory()
+        {
+            var historyView = new HistoryWindow();
+            historyView.Show();
 
         }
 
         public List<double> getHistory()
         {
             return debts[CurrentSelectedIndex].Amounts;
+            
         }
+
+        
+
+
     }
 }
+

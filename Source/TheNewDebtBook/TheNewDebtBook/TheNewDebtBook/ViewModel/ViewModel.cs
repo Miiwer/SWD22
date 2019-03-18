@@ -8,26 +8,41 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 using TheDebtBook.Model;
+using TheNewDebtBook.ViewModel;
 
 namespace TheDebtBook.ViewModel
 {
     class ViewModel : ObservableCollection<Debts>
     {
 
-        private ObservableCollection<Debts> debts;
+        private ObservableCollection<Debts> debts= null;
         private string CurrentName;
         private double CurrentAmount;
         private int CurrentSelectedIndex;
 
+
+        private ICommand _addDebitorCommand;
+        public ICommand AddDebitorCommand
+        {
+            get
+            {
+                return _addDebitorCommand ?? (_addDebitorCommand = new CommandHandler(() => addDebitor(), true));
+            }
+        }
+
         public void addDebitor()
         {
-            for (int i = 0; i < (debts.Count - 1); i++)
+            if (debts != null)
             {
-                if (debts[i].Name == CurrentName)
+                for (int i = 0; i < (debts.Count - 1); i++)
                 {
-                    debts[i].Amounts.Add(CurrentAmount);
-                    debts[i].CalculateSum(debts[i].Amounts);
+                    if (debts[i].Name == CurrentName)
+                    {
+                        debts[i].Amounts.Add(CurrentAmount);
+                        debts[i].CalculateSum(debts[i].Amounts);
+                    }
                 }
             }
 

@@ -4,10 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TheNewDebtBook"
+        xmlns:viewModel="clr-namespace:TheDebtBook.ViewModel"
         mc:Ignorable="d"
         Title="MainWindow" Height="500" MinHeight="500" Width="800" MinWidth="800">
 
-        <Grid Name="DebtGrid" Margin="0,2,-0.667,-0.333" HorizontalAlignment="Stretch" Background="LightCyan" >
+    <Window.DataContext>
+        <viewModel:ViewModel />
+    </Window.DataContext>
+
+    <Grid Name="DebtGrid" Margin="0,2,-0.667,-0.333" HorizontalAlignment="Stretch" Background="LightCyan" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="22.5"></RowDefinition>
                 <RowDefinition Height="481.6"></RowDefinition>
@@ -71,7 +76,7 @@
                          HorizontalAlignment="Left" 
                          Text="{}" 
                          Grid.Row="1"
-                         Grid.Column="3" Width="264" Height="18"       
+                         Grid.Column="3" Width="264" Height="18"
                 />
             <Button ToolTip="Add New" 
                         Content="_Add"
@@ -81,6 +86,7 @@
                         Margin="0,95.8,30.6,0"
                         Grid.Row="1"
                         Grid.Column="3" Width="150" Height="20"
+                        Command="{Binding AddDebitorCommand}"
                         />
 
             <Button ToolTip="Delete Selected"

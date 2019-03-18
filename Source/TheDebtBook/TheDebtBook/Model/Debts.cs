@@ -13,7 +13,7 @@ namespace TheDebtBook.Model
         public double Sum { get; set; }
         public List<double> Amount;
 
-        public CalculateSum(List<double> Amount)
+        public double CalculateSum(List<double> Amount)
         {
             Sum = 0;
             foreach (var value in Amount)
@@ -21,6 +21,7 @@ namespace TheDebtBook.Model
                 Sum =+ value;
             }
 
+            return Sum;
         }
 
 

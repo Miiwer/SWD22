@@ -1,0 +1,73 @@
+﻿<UserControl x:Class="barApp.Views.MenuTabView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" Background="LightGray"
+             d:DesignHeight="450" d:DesignWidth="800">
+
+		<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="20" />
+			<ColumnDefinition Width="auto" />
+			<ColumnDefinition Width="auto" MinWidth="105"/>
+			<ColumnDefinition Width="auto" />
+			<ColumnDefinition Width="20" />
+		</Grid.ColumnDefinitions>
+
+		<Grid.RowDefinitions>
+			<RowDefinition Height="20" />
+			<RowDefinition Height="auto" />
+			<RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+		    <RowDefinition Height="auto" />
+		    <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+		    <RowDefinition Height="auto" />
+		    <RowDefinition Height="auto" />
+		    <RowDefinition Height="auto" />
+            <RowDefinition Height="20" />
+		</Grid.RowDefinitions>
+
+        <TextBlock Text="Drink1 Name" Grid.Row="1" Grid.Column="1"/>
+        <TextBlock Text="            Ingredient 1" Grid.Row="2" Grid.Column="1"/>
+        <TextBlock Text="            Ingredient 2" Grid.Row="3" Grid.Column="1"/>
+        <TextBox IsHitTestVisible="False" Name="NameDrink1" Grid.Row="1" Grid.Column="2" Background="LightGray"/>
+        <TextBox IsHitTestVisible="False" Name="FirstIngredientDrink1"  Grid.Row="2" Grid.Column="2" Background="LightGray"/>
+        <TextBox IsHitTestVisible="False" Name="SecondIngredientDrink1"  Grid.Row="3" Grid.Column="2" Background="LightGray"/>
+
+        <TextBlock Text="Drink2 Name" Grid.Row="4" Grid.Column="1"/>
+        <TextBlock Text="            Ingredient 1" Grid.Row="5" Grid.Column="1"/>
+        <TextBlock Text="            Ingredient 2" Grid.Row="6" Grid.Column="1"/>
+        <TextBox IsHitTestVisible="False" Name="NameDrink2"  Grid.Row="4" Grid.Column="2" Background="LightGray"/>
+        <TextBox IsHitTestVisible="False" Name="FirstIngredientDrink2" Grid.Row="5" Grid.Column="2" Background="LightGray"/>
+        <TextBox IsHitTestVisible="False" Name="SecondIngredientDrink2" Grid.Row="6" Grid.Column="2" Background="LightGray"/>
+
+        <TextBlock Text="Drink3 Name" Grid.Row="7" Grid.Column="1"/>
+        <TextBlock Text="            Ingredient 1" Grid.Row="8" Grid.Column="1"/>
+        <TextBlock Text="            Ingredient 2" Grid.Row="9" Grid.Column="1"/>
+        <TextBox IsHitTestVisible="False" Name="NameDrink3" Grid.Row="7" Grid.Column="2" Background="LightGray"/>
+        <TextBox IsHitTestVisible="False" Name="FirstIngredientDrink3" Grid.Row="8" Grid.Column="2" Background="LightGray"/>
+        <TextBox IsHitTestVisible="False" Name="SecondIngredientDrink3" Grid.Row="9" Grid.Column="2" Background="LightGray"/>
+
+		<TextBlock Text="Drink4 Name" Grid.Row="10" Grid.Column="1"/>
+        <TextBlock Text="            Ingredient 1" Grid.Row="11" Grid.Column="1"/>
+        <TextBlock Text="            Ingredient 2" Grid.Row="12" Grid.Column="1"/>
+		<TextBox IsHitTestVisible="False" Name="NameDrink4" Grid.Row="10" Grid.Column="2" Background="LightGray"/>
+		<TextBox IsHitTestVisible="False" Name="FirstIngredientDrink4"  Grid.Row="11" Grid.Column="2" Background="LightGray"/>
+		<TextBox IsHitTestVisible="False" Name="SecondIngredientDrink4"  Grid.Row="12" Grid.Column="2" Background="LightGray"/>
+
+		<TextBlock Text="Drink5 Name" Grid.Row="13" Grid.Column="1"/>
+		<TextBlock Text="            Ingredient 1" Grid.Row="14" Grid.Column="1"/>
+		<TextBlock Text="            Ingredient 2" Grid.Row="15" Grid.Column="1"/>
+		<TextBox IsHitTestVisible="False" Name="NameDrink5"  Grid.Row="13" Grid.Column="2" Background="LightGray"/>
+		<TextBox IsHitTestVisible="False" Name="FirstIngredientDrink5"  Grid.Row="14" Grid.Column="2" Background="LightGray"/>
+		<TextBox IsHitTestVisible="False" Name="SecondIngredientDrink5" Grid.Row="15" Grid.Column="2" Background="LightGray"/>
+    </Grid>
+</UserControl>

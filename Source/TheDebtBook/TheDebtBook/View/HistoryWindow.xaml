@@ -25,7 +25,7 @@
                Content="Current debt history of:" 
         />
         <Label Margin="10,0,0,0" 
-               Name="labelName" 
+               Name="LabelName" 
                VerticalAlignment="Top" 
                HorizontalAlignment="Left" 
                MinWidth="58"
@@ -39,8 +39,7 @@
                  Grid.Column="0" 
                  Height="Auto"
                  Margin="10,5,10,10"
-                 ScrollViewer.VerticalScrollBarVisibility="Visible"
-                 ItemTemplate="{StaticResource HistoryTemplate}"   
+                 ScrollViewer.VerticalScrollBarVisibility="Visible"   
         />
         <!--ItemTemplate="{StaticResource HistoryTemplate}"-->
 

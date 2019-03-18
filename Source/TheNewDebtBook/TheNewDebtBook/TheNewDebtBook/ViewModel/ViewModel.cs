@@ -18,6 +18,8 @@ namespace TheDebtBook.ViewModel
     class ViewModel : ObservableCollection<Debts>
     {
         private ObservableCollection<Debts> debts;
+        private ObservableCollection<double> SelectedDebt;
+        //private List<double> SelectedDebt;
 
         private string CurrentName;
         private double CurrentAmount;
@@ -39,20 +41,20 @@ namespace TheDebtBook.ViewModel
             }
         }
 
-        private Debts currentDebt = null;
+        //private Debts currentDebt = null;
 
-        public Debts CurrentDebt
-        {
-            get { return currentDebt; }
-            set
-            {
-                if (currentDebt != value)
-                {
-                    currentDebt = value;
-                    //NotifyPropertyChanged();
-                }
-            }
-        }
+        //public Debts CurrentDebt
+        //{
+        //    get { return currentDebt; }
+        //    set
+        //    {
+        //        if (currentDebt != value)
+        //        {
+        //            currentDebt = value;
+        //            //NotifyPropertyChanged();
+        //        }
+        //    }
+        //}
 
 
         public string Name
@@ -81,6 +83,46 @@ namespace TheDebtBook.ViewModel
             }
         }
 
+        public int SelectedIndex
+        {
+            get { return CurrentSelectedIndex; }
+            set
+            {
+                if (CurrentSelectedIndex != value)
+                {
+                    CurrentSelectedIndex = value;
+                    //NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public ObservableCollection<double> getHistory
+        {
+            get
+            {
+                if (SelectedDebt == null)
+                {
+                    SelectedDebt = new ObservableCollection<double>();
+                    return SelectedDebt;
+                }
+                else
+                {
+                    return SelectedDebt;
+                }
+                
+            }
+            set
+            {
+                if (SelectedDebt != value)
+                {
+                    SelectedDebt = value;
+                    //NotifyPropertyChanged();
+                }
+            }
+        }
+
+
+
         private ICommand _addDebitorCommand;
         public ICommand AddDebitorCommand
         {
@@ -101,7 +143,7 @@ namespace TheDebtBook.ViewModel
                     {
                         debts[i].Amounts.Add(CurrentAmount);
                         debts[i].CalculateSum(debts[i].Amounts);
-                        List<double> NyAmount = debts[i].Amounts;
+                        ObservableCollection<double> NyAmount = debts[i].Amounts;
                         string SammeNavn = debts[i].Name;
                         double NySum = debts[i].CalculateSum(NyAmount) + CurrentAmount;
                         debts.RemoveAt(i);
@@ -152,7 +194,6 @@ namespace TheDebtBook.ViewModel
 
         }
         
-
         private ICommand _getHistoryCommand;
         public ICommand GetHistoryCommand
         {
@@ -164,19 +205,16 @@ namespace TheDebtBook.ViewModel
 
         public void openHistory()
         {
+            SelectedDebt = new ObservableCollection<double>();
+            SelectedDebt = Debts[CurrentSelectedIndex].Amounts;
             var historyView = new HistoryWindow();
             historyView.Show();
-
         }
-
-        public List<double> getHistory()
-        {
-            return debts[CurrentSelectedIndex].Amounts;
-            
-        }
-
         
+        public void GetName()
+        {
 
+        }
 
     }
 }

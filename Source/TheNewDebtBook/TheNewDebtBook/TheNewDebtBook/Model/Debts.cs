@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
@@ -8,11 +9,12 @@ using System.Threading.Tasks;
 
 namespace TheDebtBook.Model
 {
-    class Debts
+    public class Debts
     {
         public String Name { get; set; }
         public double Sum { get; set; }
-        public List<double> Amounts;
+        public ObservableCollection<double> Amounts;
+        //public List<double> Amounts;
 
         public Debts(string name, double currentAmount)
         {
@@ -24,14 +26,14 @@ namespace TheDebtBook.Model
             }
             else
             {
-                Amounts = new List<double>();
+                Amounts = new ObservableCollection<double>();
                 Name = name;
                 Amounts.Add(currentAmount);
                 CalculateSum(Amounts);
             }
         }
 
-        public double CalculateSum(List<double> Amounts)
+        public double CalculateSum(ObservableCollection<double> Amounts)
         {
             Sum = 0;
             foreach (var value in Amounts)

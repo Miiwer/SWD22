@@ -42,7 +42,7 @@
                Content="Debt:" 
                VerticalAlignment="Stretch" Grid.ColumnSpan="2" Grid.Row="1"/>
 
-            <ListBox ItemsSource="{Binding Path = Debts}"
+        <ListBox ItemsSource="{Binding Path = Debts}"
                          IsSynchronizedWithCurrentItem="True"
                          Name="ListboxDebts"
                          Grid.Column="0" 
@@ -50,10 +50,9 @@
                          ScrollViewer.VerticalScrollBarVisibility="Visible" 
                          Grid.Row="1"
                          ItemTemplate="{StaticResource DebtTemplate}"
-                         SelectedItem ="{Binding CurrentDebt}"
+                         SelectedItem ="{Binding Path = SelectedIndex}"
+                         SelectionMode="Single"
                          />
-
-            <!--ItemTemplate="{StaticResource DebtTemplate}"-->
 
         <Label Margin="10.2,6.6,0,447"  
                Grid.Row ="1" 

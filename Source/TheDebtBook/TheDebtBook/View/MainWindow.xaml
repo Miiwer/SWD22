@@ -41,8 +41,7 @@
             <!--ItemTemplate="{StaticResource DebtTemplate}"-->
             <!--SelectionChanged="ListboxDebts_SelectionChanged"-->
 
-<ListBox ItemsSource="{Binding Path=Debts}"
-                         IsSynchronizedWithCurrentItem="True"
+<ListBox IsSynchronizedWithCurrentItem="True"
                          Name="ListboxDebts" 
                          Grid.Column="0" 
                          Margin="8,32.6,9.8,86" 
@@ -66,7 +65,7 @@
                          MinWidth="58"
                          Text="{}" 
                          Grid.Row="1"
-                         Grid.Column="3" Width="264" TextChanged="TbxName_TextChanged" 
+                         Grid.Column="3" Width="264" 
                          Height="18"
                 />
             <TextBox Margin="0,54.8,30.6,0" 
@@ -75,14 +74,16 @@
                          HorizontalAlignment="Left" 
                          Text="{}" 
                          Grid.Row="1"
-                         Grid.Column="3" Width="264" Height="18" PreviewTextInput="tbxAmmout_PreviewTextInput"        
+                         Grid.Column="3" Width="264" Height="18"        
                 />
-            <Button ToolTip="Add New" 
+
+            <!--PreviewTextInput="tbxAmmout_PreviewTextInput"-->
+
+        <Button ToolTip="Add New" 
                         Content="_Add"
                         Name="BtnAddNew"
                         VerticalAlignment="Top" 
                         HorizontalAlignment="Left"
-                        Click="BtnAddNew_Click" 
                         Margin="0,95.8,30.6,0"
                         Grid.Row="1"
                         Grid.Column="3" Width="150" Height="20"
@@ -93,7 +94,6 @@
                         Name="BtnDelete"
                         VerticalAlignment="Top" 
                         HorizontalAlignment="Left"
-                        Click="BtnDelete_Click"
                         Margin="0,120.8,30.6,0"
                         Grid.Row="1"
                         Grid.Column="3" Width="150" Height="19"
@@ -104,7 +104,6 @@
                         Name="BtnInfo"
                         VerticalAlignment="Top" 
                         HorizontalAlignment="Left"
-                        Click="BtnHistory_Click"
                         Margin="0,145.8,30.6,0"
                         Grid.Row="1"
                         Grid.Column="3" Width="150" Height="19"

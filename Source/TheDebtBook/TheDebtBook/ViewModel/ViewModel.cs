@@ -26,8 +26,8 @@ namespace TheDebtBook.ViewModel
             {
                 if (debts[i].Name == CurrentName)
                 {
-                    debts[i].Amount.Add(CurrentAmount);
-                    debts[i].CalculateSum(debts[i].Amount);
+                    debts[i].Amounts.Add(CurrentAmount);
+                    debts[i].CalculateSum(debts[i].Amounts);
                 }
             }
 
@@ -50,7 +50,7 @@ namespace TheDebtBook.ViewModel
 
         public List<double> getHistory()
         {
-            return debts[CurrentSelectedIndex].Amount;
+            return debts[CurrentSelectedIndex].Amounts;
         }
 
 

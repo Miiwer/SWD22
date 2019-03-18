@@ -16,9 +16,19 @@ namespace TheDebtBook.Model
 
         public Debts(string name, double currentAmount)
         {
-            Name = name;
-            Amounts.Add(currentAmount);
-            CalculateSum(Amounts);
+            if (Amounts != null)
+            {
+                Name = name;
+                Amounts.Add(currentAmount);
+                CalculateSum(Amounts);
+            }
+            else
+            {
+                Amounts = new List<double>();
+                Name = name;
+                Amounts.Add(currentAmount);
+                CalculateSum(Amounts);
+            }
         }
 
         public double CalculateSum(List<double> Amounts)

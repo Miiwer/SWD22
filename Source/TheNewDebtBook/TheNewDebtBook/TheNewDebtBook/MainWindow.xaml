@@ -44,7 +44,6 @@
 
             <ListBox ItemsSource="{Binding Path=Debts}"
                          IsSynchronizedWithCurrentItem="True"
-                         ItemTemplate="{StaticResource DebtTemplate}"
                          Name="ListboxDebts" 
                          Grid.Column="0" 
                          Margin="8,32.6,9.8,86"  
@@ -52,7 +51,9 @@
                          Grid.Row="1"
                          />
 
-            <Label Margin="10.2,6.6,0,447"  
+            <!--ItemTemplate="{StaticResource DebtTemplate}"-->
+
+        <Label Margin="10.2,6.6,0,447"  
                Grid.Row ="1" 
                Grid.Column="1"
                VerticalAlignment="Stretch" >Name:</Label>
@@ -65,18 +66,18 @@
                          Name="tbxName" 
                          VerticalAlignment="Top" 
                          HorizontalAlignment="Left" 
-                         MinWidth="58"
-                         Text="{}" 
+                         MinWidth="58" 
                          Grid.Row="1"
                          Grid.Column="3" Width="264" Height="18"
+                         Text="{Binding Path=Name}" TextChanged="TbxName_TextChanged"
                 />
             <TextBox Margin="0,54.8,30.6,0" 
                          Name="tbxAmount"
                          VerticalAlignment="Top" 
                          HorizontalAlignment="Left" 
-                         Text="{}" 
                          Grid.Row="1"
                          Grid.Column="3" Width="264" Height="18"
+                         Text="{Binding Path = Amount}"
                 />
             <Button ToolTip="Add New" 
                         Content="_Add"

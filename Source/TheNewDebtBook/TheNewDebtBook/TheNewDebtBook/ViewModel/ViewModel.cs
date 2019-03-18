@@ -16,12 +16,61 @@ namespace TheDebtBook.ViewModel
 {
     class ViewModel : ObservableCollection<Debts>
     {
+        ObservableCollection<Debts> debts;
 
-        private ObservableCollection<Debts> debts= null;
         private string CurrentName;
         private double CurrentAmount;
         private int CurrentSelectedIndex;
 
+        public ObservableCollection<Debts> Debts
+        {
+            get
+            {
+                return debts;
+            }
+        }
+
+        private Debts currentDebt = null;
+
+        public Debts CurrentDebt
+        {
+            get { return currentDebt; }
+            set
+            {
+                if (currentDebt != value)
+                {
+                    currentDebt = value;
+                    //NotifyPropertyChanged();
+                }
+            }
+        }
+
+
+        public string Name
+        {
+            get { return CurrentName; }
+            set
+            {
+                if (CurrentName != value)
+                {
+                    CurrentName = value;
+                    //NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public double Amount
+        {
+            get { return CurrentAmount; }
+            set
+            {
+                if (CurrentAmount != value)
+                {
+                    CurrentAmount = value;
+                    //NotifyPropertyChanged();
+                }
+            }
+        }
 
         private ICommand _addDebitorCommand;
         public ICommand AddDebitorCommand
@@ -36,17 +85,24 @@ namespace TheDebtBook.ViewModel
         {
             if (debts != null)
             {
-                for (int i = 0; i < (debts.Count - 1); i++)
+                
+                for (int i = 0; i > (debts.Count - 1); i++)
                 {
                     if (debts[i].Name == CurrentName)
                     {
                         debts[i].Amounts.Add(CurrentAmount);
                         debts[i].CalculateSum(debts[i].Amounts);
+                        return;
                     }
                 }
+                debts.Add(new Debts(CurrentName,CurrentAmount));
+                return;
             }
-
-            debts.Add(new Debts(CurrentName, CurrentAmount));
+            else
+            {
+                debts = new ObservableCollection<Debts>();
+                debts.Add(new Debts(CurrentName, CurrentAmount));
+            }
 
         }
 
@@ -67,9 +123,5 @@ namespace TheDebtBook.ViewModel
         {
             return debts[CurrentSelectedIndex].Amounts;
         }
-
-
-
-
     }
 }

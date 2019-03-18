@@ -24,5 +24,10 @@ namespace TheNewDebtBook
         {
             InitializeComponent();
         }
+
+        private void TbxName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

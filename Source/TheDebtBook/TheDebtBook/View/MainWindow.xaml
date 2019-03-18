@@ -38,13 +38,14 @@
                Content="Debt:" 
                VerticalAlignment="Stretch" Grid.ColumnSpan="2" Grid.Row="1"/>
 
-            <ListBox ItemsSource="{Binding Path=Debts}"
+            <!--ItemTemplate="{StaticResource DebtTemplate}"-->
+            <!--SelectionChanged="ListboxDebts_SelectionChanged"-->
+
+<ListBox ItemsSource="{Binding Path=Debts}"
                          IsSynchronizedWithCurrentItem="True"
-                         ItemTemplate="{StaticResource DebtTemplate}"
                          Name="ListboxDebts" 
                          Grid.Column="0" 
                          Margin="8,32.6,9.8,86" 
-                         SelectionChanged="ListboxDebts_SelectionChanged"  
                          ScrollViewer.VerticalScrollBarVisibility="Visible" 
                          Grid.Row="1"
                          />
@@ -65,7 +66,8 @@
                          MinWidth="58"
                          Text="{}" 
                          Grid.Row="1"
-                         Grid.Column="3" Width="264" TextChanged="TbxName_TextChanged" Height="18"
+                         Grid.Column="3" Width="264" TextChanged="TbxName_TextChanged" 
+                         Height="18"
                 />
             <TextBox Margin="0,54.8,30.6,0" 
                          Name="tbxAmount"

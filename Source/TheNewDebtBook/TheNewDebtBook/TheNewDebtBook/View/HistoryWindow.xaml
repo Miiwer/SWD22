@@ -35,7 +35,8 @@
                    Grid.Column="0" Width="167"
             />
 
-        <ListBox IsSynchronizedWithCurrentItem="True"
+        <ListBox ItemsSource="{Binding Path = Debts }"
+                     IsSynchronizedWithCurrentItem="True"
                      Name="ListboxHistory" 
                      Grid.Row="2"
                      Grid.Column="0" 
@@ -43,7 +44,6 @@
                      Margin="10,5,10,10"
                      ScrollViewer.VerticalScrollBarVisibility="Visible"
                      ItemTemplate="{StaticResource DebtTemplate}"
-                     ItemsSource="{Binding Path = Debts}"
             />
 
         <Button ToolTip="Close Window" 

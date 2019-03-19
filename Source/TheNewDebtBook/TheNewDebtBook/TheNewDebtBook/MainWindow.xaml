@@ -50,8 +50,6 @@
                          ScrollViewer.VerticalScrollBarVisibility="Visible" 
                          Grid.Row="1"
                          ItemTemplate="{StaticResource DebtTemplate}"
-                         SelectedItem ="{Binding Path = SelectedIndex}"
-                         SelectionMode="Single"
                          />
 
         <Label Margin="10.2,6.6,0,447"  

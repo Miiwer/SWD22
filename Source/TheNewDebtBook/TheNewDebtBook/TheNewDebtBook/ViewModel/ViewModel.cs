@@ -8,6 +8,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using TheDebtBook.Model;
 using TheNewDebtBook.View;
@@ -15,11 +16,18 @@ using TheNewDebtBook.ViewModel;
 
 namespace TheDebtBook.ViewModel
 {
-    class ViewModel : ObservableCollection<Debts>
+    public class ViewModel : ObservableCollection<Debts>
     {
         private ObservableCollection<Debts> debts;
         private ObservableCollection<double> SelectedDebt;
         //private List<double> SelectedDebt;
+
+        public ViewModel()
+        {
+            debts = new ObservableCollection<Debts>();
+            debts.Add(new Debts("Mie Kryds Nielsen", 689));
+            debts.Add(new Debts("Viggo", -100));
+        }
 
         private string CurrentName;
         private double CurrentAmount;
@@ -29,32 +37,20 @@ namespace TheDebtBook.ViewModel
         {
             get
             {
-                if (debts == null)
-                {
-                    debts = new ObservableCollection<Debts>();
-                    return debts;
-                }
-                else
+                //if (debts == null)
+                //{
+                //    debts = new ObservableCollection<Debts>();
+                //    return debts;
+                //}
+                //else
+                //{
+                //    return debts;
+                //}
                 {
                     return debts;
                 }
             }
         }
-
-        //private Debts currentDebt = null;
-
-        //public Debts CurrentDebt
-        //{
-        //    get { return currentDebt; }
-        //    set
-        //    {
-        //        if (currentDebt != value)
-        //        {
-        //            currentDebt = value;
-        //            //NotifyPropertyChanged();
-        //        }
-        //    }
-        //}
 
 
         public string Name
@@ -65,7 +61,6 @@ namespace TheDebtBook.ViewModel
                 if (CurrentName != value)
                 {
                     CurrentName = value;
-                    //NotifyPropertyChanged();
                 }
             }
         }
@@ -78,7 +73,6 @@ namespace TheDebtBook.ViewModel
                 if (CurrentAmount != value)
                 {
                     CurrentAmount = value;
-                    //NotifyPropertyChanged();
                 }
             }
         }
@@ -91,7 +85,6 @@ namespace TheDebtBook.ViewModel
                 if (CurrentSelectedIndex != value)
                 {
                     CurrentSelectedIndex = value;
-                    //NotifyPropertyChanged();
                 }
             }
         }
@@ -116,12 +109,9 @@ namespace TheDebtBook.ViewModel
                 if (SelectedDebt != value)
                 {
                     SelectedDebt = value;
-                    //NotifyPropertyChanged();
                 }
             }
         }
-
-
 
         private ICommand _addDebitorCommand;
         public ICommand AddDebitorCommand
@@ -189,9 +179,8 @@ namespace TheDebtBook.ViewModel
             }
             else
             {
-                MessageBox.Show("DEN FINDES IKKE FJOLLEHOVEDE :D !");
+                MessageBox.Show("Cannot remove debt");
             }
-
         }
         
         private ICommand _getHistoryCommand;
@@ -210,12 +199,6 @@ namespace TheDebtBook.ViewModel
             var historyView = new HistoryWindow();
             historyView.Show();
         }
-        
-        public void GetName()
-        {
-
-        }
-
     }
 }
 
